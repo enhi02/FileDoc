@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FileDoc.Models;
 using FileDoc.Models.ViewModel;
-//using FileDoc.Service;
+using FileDoc.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
