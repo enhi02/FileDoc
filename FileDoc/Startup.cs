@@ -88,6 +88,7 @@ namespace FileDoc
             // });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
+
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters()
@@ -103,7 +104,14 @@ namespace FileDoc
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Key"]))
                 };
             });
+           
 
+            //c.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+            //c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            //    {
+            //        { jwtSecurityScheme, Array.Empty<string>() }
+            //    });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FlightDocsSystem", Version = "v1" });
@@ -129,7 +137,6 @@ namespace FileDoc
                 {
                     { jwtSecurityScheme, Array.Empty<string>() }
                 });
-
             });
         }
 
