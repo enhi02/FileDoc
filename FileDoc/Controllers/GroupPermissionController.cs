@@ -34,6 +34,7 @@ namespace FileDoc.Controllers
             _groupPermission = groupPermission;
         }
         [HttpPost]
+        [Authorize(Roles = "1")]
         public async Task<ActionResult<int>> AddGroup(GroupPermission group)
         {
             try
@@ -58,6 +59,7 @@ namespace FileDoc.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> PutGroup(int id, GroupPermission group)
         {
             if (id != group.GroupId)
@@ -99,6 +101,7 @@ namespace FileDoc.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> DeleteGroup(int id)
         {
             var Group = await _context.groupPermissions.FindAsync(id);

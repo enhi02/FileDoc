@@ -34,6 +34,7 @@ namespace FileDoc.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "1")]
         public async Task<ActionResult<int>> AddDocument(DocumentList document)
         {
             try
@@ -58,6 +59,7 @@ namespace FileDoc.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> PutDocument(int id, DocumentList document)
         {
             if (id != document.DocumentId)
@@ -99,6 +101,7 @@ namespace FileDoc.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> DeleteDocument(int id)
         {
             var Document = await _context.documentLists.FindAsync(id);

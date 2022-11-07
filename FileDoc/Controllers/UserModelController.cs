@@ -33,6 +33,7 @@ namespace FileDoc.Controllers
             _user = user;
         }
         [HttpPost, ActionName("user")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> PostAsync(UserModel users)
         {
             if (ModelState.IsValid)
@@ -76,6 +77,7 @@ namespace FileDoc.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> PutUser(int id, UserModel User)
         {
             if (id != User.UserId)
@@ -121,6 +123,7 @@ namespace FileDoc.Controllers
 
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.users.FindAsync(id);

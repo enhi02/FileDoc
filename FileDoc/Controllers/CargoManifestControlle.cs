@@ -34,6 +34,7 @@ namespace FileDoc.Controllers
             _cargoManifest = cargoManifest;
         }
         [HttpPost]
+        [Authorize(Roles = "1")]
         public async Task<ActionResult<int>> AddCargoManifest(CargoManifest cargo)
         {
             try
@@ -58,6 +59,7 @@ namespace FileDoc.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> PutCargoManifest(int id, CargoManifest cargo)
         {
             if (id != cargo.FlightId)
@@ -98,6 +100,7 @@ namespace FileDoc.Controllers
 
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> DeleteCargoManifest(int id)
         {
             var CargoManifest = await _context.cargoManifests.FindAsync(id);
